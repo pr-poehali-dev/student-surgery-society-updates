@@ -40,20 +40,20 @@ const HistorySection = () => {
 
           <div>
             <h3 className="font-oswald text-2xl font-bold text-sho-dark mb-6">Руководство</h3>
-            <div className="space-y-4 mb-8">
+            <div className="grid grid-cols-3 gap-4 mb-8">
               {LEADERS.map((leader) => (
                 <div
                   key={leader.name}
-                  className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-gray-100 card-hover"
+                  className="flex flex-col items-center text-center bg-white rounded-2xl p-5 border border-gray-100 card-hover"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-sho-red to-sho-red-dark flex items-center justify-center flex-shrink-0">
-                    <Icon name={leader.icon} size={24} className="text-white" fallback="User" />
+                  <div className="w-24 h-24 rounded-2xl bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-4 overflow-hidden flex-shrink-0 relative group cursor-pointer">
+                    <Icon name="Camera" size={22} className="text-gray-300" />
+                    <span className="text-gray-300 text-xs mt-1">Фото</span>
+                    <div className="absolute inset-0 bg-sho-red/0 group-hover:bg-sho-red/5 transition-colors rounded-2xl" />
                   </div>
-                  <div>
-                    <div className="font-bold text-sho-dark text-sm">{leader.name}</div>
-                    <div className="text-sho-red text-xs font-semibold">{leader.role}</div>
-                    <div className="text-gray-500 text-xs">{leader.degree}</div>
-                  </div>
+                  <div className="font-bold text-sho-dark text-sm leading-tight">{leader.name}</div>
+                  <div className="text-sho-red text-xs font-semibold mt-1">{leader.role}</div>
+                  <div className="text-gray-400 text-xs mt-0.5">{leader.degree}</div>
                 </div>
               ))}
             </div>
