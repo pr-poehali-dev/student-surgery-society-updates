@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
+import HomeSection from "@/components/HomeSection";
 import NewsSection from "@/components/NewsSection";
 import DirectionsSection from "@/components/DirectionsSection";
 import DirectionModal from "@/components/DirectionModal";
@@ -62,7 +62,7 @@ const Index = () => {
   const renderSection = () => {
     switch (activeSection) {
       case "home":
-        return <HeroSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
+        return <HomeSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
       case "news":
         return <NewsSection />;
       case "directions":
@@ -79,7 +79,7 @@ const Index = () => {
       case "contacts":
         return <ContactsSection onApply={() => setShowApplication(true)} />;
       default:
-        return <HeroSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
+        return <HomeSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
     }
   };
 
