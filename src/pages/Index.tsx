@@ -51,54 +51,51 @@ const Index = () => {
     setShowApplication(false);
   };
 
-  const scrollToSection = (section: string) => {
-    setActiveSection(section);
+  const navigate = (section: string) => {
     if (section === "admin") {
       setShowAdmin(true);
       return;
     }
-    const el = document.getElementById(section);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveSection(section);
+  };
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case "home":
+        return <HeroSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
+      case "news":
+        return <NewsSection />;
+      case "directions":
+        return (
+          <DirectionsSection
+            onSelectDirection={(d) => setSelectedDirection(d)}
+            onApply={() => setShowApplication(true)}
+          />
+        );
+      case "history":
+        return <HistorySection />;
+      case "videos":
+        return <VideosSection />;
+      case "contacts":
+        return <ContactsSection onApply={() => setShowApplication(true)} />;
+      default:
+        return <HeroSection onApply={() => setShowApplication(true)} onNavigate={navigate} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-white font-montserrat">
+    <div className="min-h-screen bg-white font-montserrat flex flex-col">
       <Navbar
         activeSection={activeSection}
-        onNavigate={scrollToSection}
+        onNavigate={navigate}
         onApply={() => setShowApplication(true)}
       />
 
-      <section id="home">
-        <HeroSection onApply={() => setShowApplication(true)} />
-      </section>
+      <main className="flex-1 pt-16">
+        {renderSection()}
+      </main>
 
-      <section id="news">
-        <NewsSection />
-      </section>
-
-      <section id="directions">
-        <DirectionsSection
-          onSelectDirection={(d) => setSelectedDirection(d)}
-          onApply={() => setShowApplication(true)}
-        />
-      </section>
-
-      <section id="history">
-        <HistorySection />
-      </section>
-
-      <section id="videos">
-        <VideosSection />
-      </section>
-
-      <section id="contacts">
-        <ContactsSection onApply={() => setShowApplication(true)} />
-      </section>
-
-      <Footer onNavigate={scrollToSection} />
+      <Footer onNavigate={navigate} />
 
       {selectedDirection && (
         <DirectionModal

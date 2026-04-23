@@ -2,9 +2,10 @@ import Icon from "@/components/ui/icon";
 
 interface HeroSectionProps {
   onApply: () => void;
+  onNavigate: (section: string) => void;
 }
 
-const HeroSection = ({ onApply }: HeroSectionProps) => {
+const HeroSection = ({ onApply, onNavigate }: HeroSectionProps) => {
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden pt-16">
       <div
@@ -28,7 +29,7 @@ const HeroSection = ({ onApply }: HeroSectionProps) => {
       <div
         className="absolute right-0 top-0 bottom-0 w-1/2 bg-cover bg-center opacity-20"
         style={{
-          backgroundImage: `url('https://cdn.poehali.dev/projects/14acfb03-c5a7-4233-a415-5220916be8c9/files/aee80627-5b9d-4ed5-a189-56f834257eb0.jpg')`,
+          backgroundImage: `url('https://cdn.poehali.dev/projects/14acfb03-c5a7-4233-a415-5220916be8c9/files/86a67c82-2f6f-4660-865a-3f79d66ba474.jpg')`,
           maskImage: "linear-gradient(to right, transparent, black 40%)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 40%)",
         }}
@@ -38,7 +39,7 @@ const HeroSection = ({ onApply }: HeroSectionProps) => {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-8 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-            Чемпионы Сибирского федерального округа 2024
+            Чемпионы Сибирского федерального округа 2026
           </div>
 
           <h1
@@ -71,14 +72,13 @@ const HeroSection = ({ onApply }: HeroSectionProps) => {
               <Icon name="FileText" size={22} />
               Оставить заявку
             </button>
-            <a
-              href="#directions"
-              onClick={(e) => { e.preventDefault(); document.getElementById("directions")?.scrollIntoView({ behavior: "smooth" }); }}
+            <button
+              onClick={() => onNavigate("directions")}
               className="flex items-center gap-3 border-2 border-white/40 text-white font-semibold text-lg px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300"
             >
               <Icon name="ChevronDown" size={22} />
               Наши направления
-            </a>
+            </button>
           </div>
 
           <div
@@ -89,7 +89,7 @@ const HeroSection = ({ onApply }: HeroSectionProps) => {
               { num: "10", label: "Направлений хирургии" },
               { num: "60+", label: "Активных членов" },
               { num: "2015", label: "Год основания" },
-              { num: "ТОП-1", label: "СФО 2024" },
+              { num: "ТОП-1", label: "СФО 2026" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="font-oswald text-4xl font-bold text-white">{stat.num}</div>
@@ -100,9 +100,7 @@ const HeroSection = ({ onApply }: HeroSectionProps) => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <Icon name="ChevronDown" size={28} className="text-white/50" />
-      </div>
+
     </div>
   );
 };

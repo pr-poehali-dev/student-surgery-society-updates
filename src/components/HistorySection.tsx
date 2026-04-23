@@ -12,6 +12,34 @@ const HistorySection = () => {
           </h2>
         </div>
 
+        {/* Руководство — по центру, крупные карточки */}
+        <div className="mb-12">
+          <h3 className="font-oswald text-2xl font-bold text-sho-dark mb-8 text-center">Руководство</h3>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-6">
+            {LEADERS.map((leader) => (
+              <div
+                key={leader.name}
+                className="flex flex-col items-center text-center bg-white rounded-2xl p-8 border border-gray-100 card-hover w-full sm:w-64"
+              >
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-5 overflow-hidden flex-shrink-0">
+                  <Icon name="Camera" size={28} className="text-gray-300" />
+                  <span className="text-gray-300 text-xs mt-1.5">Фото</span>
+                </div>
+                <div className="font-bold text-sho-dark text-base leading-snug mb-1">{leader.name}</div>
+                <div className="text-sho-red text-sm font-semibold">{leader.role}</div>
+                <div className="text-gray-400 text-xs mt-0.5">{leader.degree}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center">
+            <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-5 py-3 text-sm text-gray-500">
+              <Icon name="User" size={16} className="text-gray-400" />
+              <span>Студенческое руководство — капитан: <span className="font-medium text-gray-700">{CAPTAIN.name}</span>, {CAPTAIN.course}</span>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
             <div
@@ -20,12 +48,15 @@ const HistorySection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-white font-oswald text-xl font-bold">Чемпионы СФО 2024</div>
+                <div className="text-white font-oswald text-xl font-bold">Чемпионы СФО 2026</div>
                 <div className="text-white/80 text-sm">Олимпиада Сибирского федерального округа</div>
               </div>
             </div>
+          </div>
 
-            <div className="mt-6 space-y-2">
+          <div>
+            <h3 className="font-oswald text-xl font-bold text-sho-dark mb-4">История в датах</h3>
+            <div className="space-y-2">
               {TIMELINE.map((item) => (
                 <div key={item.year} className="flex gap-4 items-start">
                   <div className="flex-shrink-0 w-14 font-oswald font-bold text-sho-red text-lg">{item.year}</div>
@@ -36,45 +67,6 @@ const HistorySection = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div>
-            <h3 className="font-oswald text-2xl font-bold text-sho-dark mb-6">Руководство</h3>
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {LEADERS.map((leader) => (
-                <div
-                  key={leader.name}
-                  className="flex flex-col items-center text-center bg-white rounded-2xl p-5 border border-gray-100 card-hover"
-                >
-                  <div className="w-24 h-24 rounded-2xl bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-4 overflow-hidden flex-shrink-0 relative group cursor-pointer">
-                    <Icon name="Camera" size={22} className="text-gray-300" />
-                    <span className="text-gray-300 text-xs mt-1">Фото</span>
-                    <div className="absolute inset-0 bg-sho-red/0 group-hover:bg-sho-red/5 transition-colors rounded-2xl" />
-                  </div>
-                  <div className="font-bold text-sho-dark text-sm leading-tight">{leader.name}</div>
-                  <div className="text-sho-red text-xs font-semibold mt-1">{leader.role}</div>
-                  <div className="text-gray-400 text-xs mt-0.5">{leader.degree}</div>
-                </div>
-              ))}
-            </div>
-
-            <h3 className="font-oswald text-2xl font-bold text-sho-dark mb-4">Студенческое руководство</h3>
-            <div className="bg-gradient-to-r from-sho-red to-sho-red-dark rounded-2xl p-6 text-white">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Star" size={26} className="text-white" />
-                </div>
-                <div>
-                  <div className="font-oswald text-xl font-bold">{CAPTAIN.name}</div>
-                  <div className="text-white/80 text-sm">{CAPTAIN.role} · {CAPTAIN.course}</div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="mt-6 w-full h-40 rounded-2xl bg-cover bg-center"
-              style={{ backgroundImage: `url('https://cdn.poehali.dev/projects/14acfb03-c5a7-4233-a415-5220916be8c9/files/da530f99-916e-4921-bda0-7dfb4d34a788.jpg')` }}
-            />
           </div>
         </div>
 
